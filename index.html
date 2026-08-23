@@ -214,11 +214,11 @@
               <p class="edu-degree">B.Tech — Computer Science Engineering (AI &amp; ML)</p>
               <p class="edu-location"><i data-lucide="map-pin"></i> Keesara, Hyderabad, Telangana</p>
               <div class="edu-grade-bar">
-                <span class="edu-grade-label">SGPA</span>
+                <span class="edu-grade-label">CGPA</span>
                 <div class="grade-bar-track">
-                  <div class="grade-bar-fill" data-width="95" style="width:0%"></div>
+                  <div class="grade-bar-fill" data-width="92.75" style="width:0%"></div>
                 </div>
-                <span class="edu-grade-val">9.5 / 10</span>
+                <span class="edu-grade-val">9.275 / 10</span>
               </div>
             </div>
           </div>
@@ -397,9 +397,6 @@
               <h3 class="project-title">AI Voice Mock Interview</h3>
               <p class="project-desc">A real-time, voice-first mock interview with an AI recruiter — live speech-to-text, streaming captions and a natural back-and-forth — followed by a score out of 100, model answers and a saved report. Built on LiveKit with Deepgram, Gemini and self-hosted Kokoro TTS.</p>
               <div class="project-links">
-                <a href="https://opportunity-radar-six.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary" aria-label="Live demo of AI Voice Mock Interview">
-                  <i data-lucide="external-link"></i> Live Demo
-                </a>
                 <a href="https://github.com/Laxmansirvi05/Ai_voice_interview" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline" aria-label="GitHub repo for AI Voice Mock Interview">
                   <i data-lucide="github"></i> GitHub
                 </a>
@@ -410,7 +407,7 @@
           <!-- Project 3: AI Job-Search Agent -->
           <article class="project-card glass-card reveal-up" data-tilt id="proj-agent" style="--delay:0.2s">
             <div class="project-img-wrap">
-              <img src="images/projects/ai-agent.svg" alt="AI Job-Search Agent — agentic discovery pipeline diagram" class="project-img" loading="lazy" onerror="this.closest('.project-img-wrap').classList.add('img-placeholder')" />
+              <img src="images/projects/ai-agent.png" alt="AI Job-Search Agent — n8n workflow" class="project-img" loading="lazy" onerror="this.closest('.project-img-wrap').classList.add('img-placeholder')" />
               <div class="project-img-overlay" aria-hidden="true"></div>
               <div class="project-number" aria-hidden="true">03</div>
             </div>
@@ -424,12 +421,9 @@
               <h3 class="project-title">AI Job-Search Agent</h3>
               <p class="project-desc">The agentic engine behind Opportunity Radar's AI Search. It reads a résumé, plans a multi-source web search, extracts real postings, scores each against the candidate and returns a ranked list — every result with a working apply link. Provider failover, quality gates and a headless-browser fallback.</p>
               <div class="project-links">
-                <a href="https://opportunity-radar-six.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary" aria-label="See the AI Job-Search Agent in Opportunity Radar">
-                  <i data-lucide="external-link"></i> See it live
+                <a href="https://github.com/Laxmansirvi05/opportunity-radar-ai-agent" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline" aria-label="GitHub repo for AI Job-Search Agent">
+                  <i data-lucide="github"></i> GitHub
                 </a>
-                <button class="btn btn-sm btn-ghost" disabled aria-label="Private repository" title="Private repository" style="cursor:not-allowed;opacity:0.5;">
-                  <i data-lucide="lock"></i> Private Repo
-                </button>
               </div>
             </div>
           </article>
@@ -478,9 +472,9 @@
               <h3 class="project-title">AI Resume Generator</h3>
               <p class="project-desc">An AI-powered resume builder designed to help users create clean, ATS-friendly resumes with live preview, smart structure, and a modern editing experience.</p>
               <div class="project-links">
-                <button class="btn btn-sm btn-ghost" disabled aria-label="Coming Soon" title="Coming Soon" style="cursor:not-allowed;opacity:0.5;">
-                  <i data-lucide="clock"></i> Coming Soon
-                </button>
+                <a href="https://resumeai-u17n.onrender.com" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary" aria-label="Live demo of AI Resume Generator">
+                  <i data-lucide="external-link"></i> Live Demo
+                </a>
                 <a href="https://github.com/Laxmansirvi05/ResumeAI" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline" aria-label="GitHub repo for AI Resume Generator">
                   <i data-lucide="github"></i> GitHub
                 </a>
@@ -488,8 +482,18 @@
             </div>
           </article>
 
-          <!-- Project 3: Weather App -->
-          <article class="project-card glass-card reveal-up" data-tilt id="proj-weather" style="--delay:0.2s">
+          <!-- Project 6: View All Projects (reveals the hidden builds) -->
+          <article class="project-card glass-card reveal-up view-all-card" data-tilt style="cursor:pointer;justify-content:center;align-items:center;text-align:center;min-height:300px;" role="button" tabindex="0" aria-label="View all projects" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" onclick="document.querySelectorAll('.project-more').forEach(function(e){e.style.display='';e.classList.add('revealed');});this.style.display='none';">
+            <div class="project-body" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.75rem;">
+              <i data-lucide="layout-grid" style="width:44px;height:44px;"></i>
+              <h3 class="project-title">View All Projects</h3>
+              <p class="project-desc">Three more builds — Weather App, Advanced Calculator and Tic&nbsp;Tac&nbsp;Toe.</p>
+              <span class="btn btn-sm btn-primary"><i data-lucide="plus"></i> Show More</span>
+            </div>
+          </article>
+
+          <!-- Project 7: Weather App -->
+          <article class="project-card glass-card reveal-up project-more" data-tilt id="proj-weather" style="--delay:0.2s;display:none">
             <div class="project-img-wrap">
               <img src="images/projects/weather-app.png" alt="Weather App dashboard screenshot" class="project-img" loading="lazy" onerror="this.closest('.project-img-wrap').classList.add('img-placeholder')" />
               <div class="project-img-overlay" aria-hidden="true"></div>
@@ -516,7 +520,7 @@
           </article>
 
           <!-- Project 4: Advanced Calculator -->
-          <article class="project-card glass-card reveal-up" data-tilt id="proj-calc" style="--delay:0.3s">
+          <article class="project-card glass-card reveal-up project-more" data-tilt id="proj-calc" style="--delay:0.3s;display:none">
             <div class="project-img-wrap">
               <img src="images/projects/calculator.png" alt="Advanced Calculator screenshot" class="project-img" loading="lazy" onerror="this.closest('.project-img-wrap').classList.add('img-placeholder')" />
               <div class="project-img-overlay" aria-hidden="true"></div>
@@ -542,7 +546,7 @@
           </article>
 
           <!-- Project 5: Tic Tac Toe -->
-          <article class="project-card glass-card reveal-up" data-tilt id="proj-ttt" style="--delay:0.4s">
+          <article class="project-card glass-card reveal-up project-more" data-tilt id="proj-ttt" style="--delay:0.4s;display:none">
             <div class="project-img-wrap">
               <img src="images/projects/tictactoe.png" alt="Tic Tac Toe game screenshot" class="project-img" loading="lazy" onerror="this.closest('.project-img-wrap').classList.add('img-placeholder')" />
               <div class="project-img-overlay" aria-hidden="true"></div>
