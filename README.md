@@ -4,6 +4,13 @@
 
 [![GitHub license](https://img.shields.io/github/license/Laxmansirvi05/portfolio)](LICENSE)
 [![GitHub repo size](https://img.shields.io/github/repo-size/Laxmansirvi05/portfolio)](https://github.com/Laxmansirvi05/portfolio)
+[![GitHub stars](https://img.shields.io/github/stars/Laxmansirvi05/portfolio?style=social)](https://github.com/Laxmansirvi05/portfolio/stargazers)
+[![GitHub followers](https://img.shields.io/github/followers/Laxmansirvi05?style=social)](https://github.com/Laxmansirvi05?tab=followers)
+
+![Laxman Sirvi's GitHub Stats](https://github-readme-stats.vercel.app/api?username=Laxmansirvi05&show_icons=true&theme=radical&count_private=true)
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Laxmansirvi05&layout=compact&theme=radical)
+
+![Laxman Sirvi's GitHub Trophy](https://github-profile-trophy.vercel.app/?username=Laxmansirvi05&theme=radical)
 
 ---
 
@@ -24,10 +31,15 @@ I don't stop at demos — I ship production AI: an agentic job-search engine, a 
 
 ### 🛠️ Tech Stack
 
-- **Languages:** Python, HTML/CSS, JavaScript
-- **AI/ML:** LLM orchestration, speech processing, AI APIs
-- **Full Stack:** Next.js, PostgreSQL, React
-- **Tools:** Git, GitHub, EmailJS
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![NodeJS](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
 
 ---
 
@@ -62,10 +74,10 @@ I don't stop at demos — I ship production AI: an agentic job-search engine, a 
 
 ## 📫 Connect
 
-- **LinkedIn:** [linkedin.com/in/laxmansirvi](https://linkedin.com/in/laxmansirvi)
-- **GitHub:** [github.com/Laxmansirvi05](https://github.com/Laxmansirvi05)
-- **Phone/WhatsApp:** +91 8688137388
-- **Location:** Hyderabad, India
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/laxmansirvi)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Laxmansirvi05)
+[![WhatsApp](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/918688137388)
+![Location](https://img.shields.io/badge/Location-Hyderabad-0066CC?style=for-the-badge&logo=google&logoColor=white)
 
 ---
 
