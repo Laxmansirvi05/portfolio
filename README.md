@@ -2,18 +2,6 @@
 
 > AI & Full-Stack Developer | Building voice-first AI products
 
-[![GitHub license](https://img.shields.io/github/license/Laxmansirvi05/portfolio)](LICENSE)
-[![GitHub repo size](https://img.shields.io/github/repo-size/Laxmansirvi05/portfolio)](https://github.com/Laxmansirvi05/portfolio)
-[![GitHub stars](https://img.shields.io/github/stars/Laxmansirvi05/portfolio?style=social)](https://github.com/Laxmansirvi05/portfolio/stargazers)
-[![GitHub followers](https://img.shields.io/github/followers/Laxmansirvi05?style=social)](https://github.com/Laxmansirvi05?tab=followers)
-
-![Laxman Sirvi's GitHub Stats](https://github-readme-stats.vercel.app/api?username=Laxmansirvi05&show_icons=true&theme=radical&count_private=true)
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Laxmansirvi05&layout=compact&theme=radical)
-
-![Laxman Sirvi's GitHub Trophy](https://github-profile-trophy.vercel.app/?username=Laxmansirvi05&theme=radical)
-
----
-
 ## 👋 About Me
 
 **Laxman Sirvi** — a second-year dual-degree student at **IIT Madras** and **Geethanjali College of Engineering and Technology**, passionate about Artificial Intelligence, Data Science, and software development.
