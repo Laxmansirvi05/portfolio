@@ -4,7 +4,7 @@
 
 ## 👋 About Me
 
-**Laxman Sirvi** — a second-year dual-degree student at **IIT Madras** and **Geethanjali College of Engineering and Technology**, passionate about Artificial Intelligence, Data Science, and software development.
+**Laxman Sirvi** — a second-year dual-degree student at **IIT Madras** and **Geethanjali College of Engineering & Technology**, passionate about Artificial Intelligence, Data Science, and software development.
 
 I don't stop at demos — I ship production AI: an agentic job-search engine, a real-time voice interviewer, and a full-stack career platform, built end-to-end and deployed for real users.
 
@@ -75,16 +75,16 @@ I don't stop at demos — I ship production AI: an agentic job-search engine, a 
 portfolio/
 ├── index.html                          # Main portfolio page
 ├── style.css                           # Styles
-├── script.js                           # JavaScript logic
-├── profile.jpg                         # Profile photo
-├── SETUP.md                            # Setup reference
-├── canvas.json                         # Canvas configuration
+├── script.js                            # JavaScript logic
+├── profile.jpg                          # Profile photo
+├── SETUP.md                             # Setup reference
+├── canvas.json                          # Canvas configuration
 ├── images/
 │   ├── certificates/                   # Certificate images
-│   └── projects/                      # Project screenshots
+│   └── projects/                       # Project screenshots
 ├── assets/
-│   └── Laxman_Sirvi_Resume.pdf        # Resume
-└── README.md                          # This file
+│   └── Laxman_Sirvi_Resume.pdf         # Resume
+└── README.md                            # This file
 ```
 
 ---
