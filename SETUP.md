@@ -1,13 +1,16 @@
-# 📁 Image Files — Where to Place Them
+# 📁 Portfolio Setup Reference
 
-## 📸 Your Profile Photo
-Replace the placeholder with your actual blazer photo:
-- **Path:** `/portfolio/profile.png`
-- Just overwrite the existing `profile.png` with your photo
+This guide covers the local assets and configuration expected by the portfolio.
+
+## 📸 Profile Photo
+
+Place the profile image at `profile.jpg`, matching the filename referenced by the project structure and page.
 
 ---
 
-## 🏆 Certificate Images → `/portfolio/images/certs/`
+## 🏆 Certificate Images
+
+Place certificate images in `images/certificates/`.
 
 | Filename | Certificate |
 |---|---|
@@ -24,7 +27,9 @@ Replace the placeholder with your actual blazer photo:
 
 ---
 
-## 💻 Project Screenshots → `/portfolio/images/projects/`
+## 💻 Project Screenshots
+
+Place project screenshots in `images/projects/`.
 
 | Filename | Project |
 |---|---|
@@ -36,32 +41,24 @@ Replace the placeholder with your actual blazer photo:
 
 ---
 
-## 📧 EmailJS Setup (Contact Form)
-Open `script.js` and replace these 3 lines at the top:
-```js
-emailjs.init('YOUR_EMAILJS_PUBLIC_KEY');
-// ...
-'YOUR_EMAILJS_SERVICE_ID'
-'YOUR_EMAILJS_TEMPLATE_ID'
-```
+## 📧 EmailJS Setup
 
-Steps:
-1. Go to https://www.emailjs.com/ → sign up free
-2. Add a service (Gmail) → note your **Service ID**
-3. Create a template with fields: `from_name`, `from_email`, `subject`, `message`
-4. Copy your **Template ID** and **Public Key**
-5. Replace the 3 placeholders in script.js
+If the contact form uses EmailJS, configure the placeholders in `script.js` with your own credentials. Never commit private keys or other secrets.
+
+1. Create an EmailJS account.
+2. Add an email service and note its Service ID.
+3. Create a template using the fields expected by `script.js`.
+4. Copy the Template ID and Public Key.
+5. Replace only the placeholder values in your local copy of `script.js`.
 
 ---
 
 ## 📄 Resume
-Drop your resume PDF as:
-- **Path:** `/portfolio/resume.pdf`
+
+Place the resume PDF at the path currently referenced by `index.html`. If you change the filename or location, update both the HTML and this guide.
 
 ---
 
-## 🔗 Update Your Real Links
-In `index.html`, update:
-- LinkedIn URL → your actual profile
-- GitHub URL → your actual profile  
-- Phone number → your actual number
+## 🔗 Personal Links
+
+Update the LinkedIn and GitHub links in `index.html` when your public profiles change. Avoid committing private contact information that you do not want published.
