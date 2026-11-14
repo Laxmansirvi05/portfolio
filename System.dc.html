@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --surface:#faf8ff; --card:#ffffff; --ink:#191b23; --muted:#434655;
+      --line:#e1e2ed; --outline:#c3c6d7; --primary:#004ac6; --primary-2:#2563eb;
+      --teal:#006b5f; --orange:#943700;
+    }
+    *{box-sizing:border-box;}
+    body{margin:0;background:var(--surface);color:var(--ink);font-family:Inter,system-ui,sans-serif;
+      -webkit-font-smoothing:antialiased;}
+    .stage{position:relative;width:1180px;height:760px;overflow:hidden;padding:44px 48px;background:var(--surface);}
+    .radar-grid{position:absolute;inset:0;
+      background-image:
+        linear-gradient(to right, rgba(37,99,235,0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(37,99,235,0.06) 1px, transparent 1px);
+      background-size:44px 44px;pointer-events:none;}
+    .wrap{position:relative;z-index:2;}
+    .kicker{font-family:'Space Grotesk';font-weight:700;font-size:26px;letter-spacing:-.5px;margin:0 0 4px;}
+    .kicker .g{background:linear-gradient(120deg,var(--primary-2),var(--teal));
+      -webkit-background-clip:text;background-clip:text;color:transparent;}
+    .note{color:var(--muted);font-size:13.5px;margin:0 0 26px;}
+    .cols{display:grid;grid-template-columns:1fr 1fr 300px;gap:24px;align-items:start;}
+    .panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 24px;
+      box-shadow:0 8px 24px rgba(25,27,35,0.05);}
+    .plabel{font-size:11.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+    .swrow{display:flex;gap:12px;flex-wrap:wrap;}
+    .sw{width:78px;}
+    .sw .chip{height:56px;border-radius:12px;border:1px solid rgba(0,0,0,0.06);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.4);}
+    .sw .nm{font-size:11px;font-weight:600;margin-top:7px;}
+    .sw .hx{font-size:10.5px;color:var(--muted);font-family:'Space Grotesk';}
+    .type-h{font-family:'Space Grotesk';font-weight:700;font-size:34px;letter-spacing:-1px;margin:0;}
+    .type-s{font-family:'Space Grotesk';font-weight:500;font-size:18px;color:var(--muted);margin:6px 0 14px;}
+    .type-b{font-size:13.5px;line-height:1.65;color:var(--muted);margin:0;}
+    .fpair{font-size:11.5px;color:var(--muted);margin-top:14px;font-weight:600;}
+    .gridcard{position:relative;overflow:hidden;height:210px;border-radius:14px;border:1px solid var(--line);
+      background:#fff;margin-top:2px;}
+    .gc-floor{position:absolute;left:50%;bottom:-30px;width:200%;height:220px;
+      transform:translateX(-50%) perspective(360px) rotateX(58deg);transform-origin:bottom center;
+      background-image:
+        linear-gradient(to right, rgba(37,99,235,0.28) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(37,99,235,0.28) 1px, transparent 1px);
+      background-size:40px 40px;
+      -webkit-mask-image:linear-gradient(to top,#000 4%,transparent 80%);
+      mask-image:linear-gradient(to top,#000 4%,transparent 80%);}
+    .gc-label{position:absolute;top:12px;left:14px;font-size:11px;font-weight:600;color:var(--primary);z-index:2;}
+    .robotcol{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+      background:linear-gradient(160deg,#ffffff,#eef2ff);border:1px solid var(--line);border-radius:18px;padding:22px;
+      box-shadow:0 8px 24px rgba(25,27,35,0.05);}
+    .robot{filter:drop-shadow(0 20px 26px rgba(37,99,235,0.26));animation:floaty 6s ease-in-out infinite;}
+    @keyframes floaty{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+    .rlabel{font-family:'Space Grotesk';font-weight:600;font-size:14px;}
+    .rsub{font-size:11.5px;color:var(--muted);text-align:center;margin-top:-8px;}
+  </style>
+</helmet>
+
+<div class="stage">
+  <div class="radar-grid"></div>
+  <div class="wrap">
+    <p class="kicker">Design language · <span class="g">Radar-grid, light &amp; professional</span></p>
+    <p class="note">Built on your Opportunity Radar DNA — Material light surface, blue primary, teal &amp; ember accents, Space Grotesk × Inter.</p>
+
+    <div class="cols">
+      <div class="panel">
+        <div class="plabel">Color — cool light, confident accents</div>
+        <div class="swrow">
+          <div class="sw"><div class="chip" style="background:#faf8ff"></div><div class="nm">Surface</div><div class="hx">#faf8ff</div></div>
+          <div class="sw"><div class="chip" style="background:#ffffff"></div><div class="nm">Card</div><div class="hx">#ffffff</div></div>
+          <div class="sw"><div class="chip" style="background:#191b23"></div><div class="nm">Ink</div><div class="hx">#191b23</div></div>
+          <div class="sw"><div class="chip" style="background:#2563eb"></div><div class="nm">Primary</div><div class="hx">#2563eb</div></div>
+          <div class="sw"><div class="chip" style="background:#004ac6"></div><div class="nm">Deep</div><div class="hx">#004ac6</div></div>
+          <div class="sw"><div class="chip" style="background:#006b5f"></div><div class="nm">Teal</div><div class="hx">#006b5f</div></div>
+          <div class="sw"><div class="chip" style="background:#943700"></div><div class="nm">Ember</div><div class="hx">#943700</div></div>
+          <div class="sw"><div class="chip" style="background:#c3c6d7"></div><div class="nm">Outline</div><div class="hx">#c3c6d7</div></div>
+        </div>
+        <div style="margin-top:22px" class="plabel">3D grid background</div>
+        <div class="gridcard"><span class="gc-label">radar-grid · perspective floor</span><div class="gc-floor"></div></div>
+      </div>
+
+      <div class="panel">
+        <div class="plabel">Typography</div>
+        <p class="type-h">Laxman Sirvi</p>
+        <p class="type-s">AI &amp; Data Science · Full Stack</p>
+        <p class="type-b">Space Grotesk gives the headings a precise, engineered feel; Inter keeps body copy clean and highly legible. Numerals and UI labels sit in Space Grotesk for that technical, dashboard-grade rhythm — the same feel as the Radar app.</p>
+        <p class="fpair">DISPLAY — Space Grotesk 700 · &nbsp; BODY — Inter 400/600</p>
+        <div style="margin-top:22px" class="plabel">Motion</div>
+        <p class="type-b">Restrained, high-impact: a floating robot, one pulse-ring on the grid, scroll-reveal on sections, subtle 3D lift on cards — never noisy.</p>
+      </div>
+
+      <div class="robotcol">
+        <svg class="robot" width="176" height="200" viewBox="0 0 360 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="180" y1="52" x2="180" y2="88" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="180" cy="44" r="10" fill="#006b5f"/>
+          <rect x="104" y="86" width="152" height="120" rx="30" fill="#ffffff" stroke="#004ac6" stroke-width="3.5"/>
+          <rect x="124" y="108" width="112" height="76" rx="20" fill="#0f1b3d"/>
+          <circle cx="156" cy="146" r="12" fill="#5ad6ff"/><circle cx="204" cy="146" r="12" fill="#5ad6ff"/>
+          <path d="M164 168 q16 12 32 0" stroke="#5ad6ff" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <rect x="90" y="126" width="14" height="40" rx="7" fill="#2563eb"/>
+          <rect x="256" y="126" width="14" height="40" rx="7" fill="#2563eb"/>
+          <rect x="166" y="204" width="28" height="20" rx="6" fill="#c3c6d7"/>
+          <rect x="92" y="222" width="176" height="132" rx="34" fill="#ffffff" stroke="#004ac6" stroke-width="3.5"/>
+          <rect x="126" y="250" width="108" height="60" rx="16" fill="#eef2ff" stroke="#c3c6d7" stroke-width="2"/>
+          <rect x="140" y="266" width="80" height="7" rx="3.5" fill="#2563eb"/>
+          <rect x="140" y="282" width="54" height="7" rx="3.5" fill="#006b5f"/>
+          <circle cx="214" cy="286" r="7" fill="#943700"/>
+          <rect x="58" y="240" width="26" height="96" rx="13" fill="#2563eb"/>
+          <rect x="276" y="240" width="26" height="96" rx="13" fill="#2563eb"/>
+          <circle cx="71" cy="344" r="15" fill="#004ac6"/><circle cx="289" cy="344" r="15" fill="#004ac6"/>
+        </svg>
+        <div class="rlabel">The Robot</div>
+        <div class="rsub">Decorative hero mascot — pure visual, on-grid, in-palette.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

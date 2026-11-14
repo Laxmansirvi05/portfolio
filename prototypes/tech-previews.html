@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tech Stack Previews</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;600&family=Inter+Tight:wght@400;500&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--void:#000;--white:#fff;--ash:#9a9a9a;--silver:#bdbdbd;--iris:#8052ff;--saffron:#ffb829;--mint:#2fd3b0;--pink:#f25cc7;--cyan:#3fd6ff;
+    --font:'Inter',system-ui,sans-serif;--display:'Inter Tight','Inter',sans-serif;--serif:'Instrument Serif',Georgia,serif;--mono:'JetBrains Mono',monospace}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#000;color:#fff;font-family:var(--font);-webkit-font-smoothing:antialiased}
+  .intro{max-width:1280px;margin:0 auto;padding:56px 24px 24px}
+  .label{font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--saffron)}
+  h1{margin-top:10px;font:400 clamp(36px,5vw,64px)/1.05 var(--display);letter-spacing:-.04em}
+  h1 em,h2 em{font-family:var(--serif);font-style:italic;background:linear-gradient(105deg,#8052ff,#c44dff 38%,#f25cc7 62%,#ffb829);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.05em}
+  .intro p{margin-top:10px;color:var(--silver);font-weight:200;font-size:18px;max-width:640px}
+  .demo-tag{display:flex;align-items:baseline;gap:14px;max-width:1280px;margin:64px auto 0;padding:0 24px}
+  .demo-tag b{font:500 13px var(--mono);color:var(--iris)}
+  .demo-tag span{font:400 26px var(--display);letter-spacing:-.02em}
+  .demo-tag i{font-style:normal;color:var(--ash);font-size:14px}
+  .frame{max-width:1280px;margin:18px auto 0;padding:0 24px}
+  .stage{position:relative;border-radius:24px;outline:1px solid rgb(255 255 255/.08);overflow:hidden;background:radial-gradient(60% 60% at 70% 45%,rgb(128 82 255/.12),transparent 70%),#000}
+
+  /* ---------- 1 · scroll story ---------- */
+  #story{height:640px}
+  #story .scroller{position:absolute;inset:0;overflow-y:auto;scrollbar-width:thin}
+  #story .track{height:calc(640px * 5.5)}
+  #story .sticky{position:sticky;top:0;height:640px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+  #story .copy{padding:48px 40px;display:flex;flex-direction:column;justify-content:center;gap:14px;z-index:2}
+  #story .copy h2{font:400 clamp(32px,3.6vw,52px)/1.05 var(--display);letter-spacing:-.04em}
+  #story .count{font:500 13px var(--mono);color:var(--ash)}
+  #story ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  #story canvas{width:100%;height:100%;display:block}
+  #story .rail{position:absolute;left:40px;bottom:28px;display:flex;gap:6px;z-index:2}
+  #story .rail span{width:22px;height:3px;border-radius:2px;background:rgb(255 255 255/.15);transition:background .3s}
+  #story .rail span.on{background:var(--iris)}
+  #story .hint{position:absolute;right:20px;bottom:20px;font-size:12px;color:var(--ash);z-index:2}
+
+  .pill{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:9999px;font-size:14px;color:#fff;
+    background:rgb(255 255 255/.04);border:1px solid rgb(255 255 255/.12);white-space:nowrap}
+  .pill i{width:7px;height:7px;border-radius:50%;background:var(--dot,#fff);box-shadow:0 0 8px var(--dot,#fff)}
+  .pop{animation:pop .45s cubic-bezier(.3,1.6,.5,1) both;animation-delay:calc(var(--k,0)*45ms)}
+  @keyframes pop{from{opacity:0;transform:scale(.6) translateY(8px)}}
+
+  /* ---------- 2 · orbit ---------- */
+  #orbit{height:720px}
+  #orbit .sky{position:absolute;inset:0;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+  #orbit .core{position:absolute;left:50%;top:50%;width:110px;height:110px;margin:-55px 0 0 -55px;border-radius:50%;display:grid;place-items:center;
+    background:radial-gradient(circle at 35% 30%,#a98bff,#8052ff 45%,#2a145f 100%);box-shadow:0 0 60px rgb(128 82 255/.6),inset 0 0 20px rgb(255 255 255/.25);
+    font:500 34px var(--display);letter-spacing:-.04em}
+  #orbit svg.rings{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+  #orbit svg.rings ellipse{fill:none;stroke:rgb(255 255 255/.08);stroke-width:1}
+  #orbit svg.rings ellipse.hot{stroke:rgb(128 82 255/.7);stroke-width:1.5}
+  #orbit .pill{position:absolute;left:0;top:0;font-size:12px;padding:5px 10px;cursor:pointer;transition:background .2s,border-color .2s,box-shadow .2s;will-change:transform}
+  #orbit .pill:hover,#orbit .pill.hot{background:rgb(128 82 255/.25);border-color:rgb(128 82 255/.7);box-shadow:0 0 18px rgb(128 82 255/.5)}
+  #orbit .pill.dim{opacity:.25}
+  #orbit .legend{position:absolute;left:20px;top:20px;display:flex;flex-direction:column;gap:6px;z-index:3}
+  #orbit .legend button{all:unset;cursor:pointer;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ash);padding:3px 0}
+  #orbit .legend button:hover,#orbit .legend button.on{color:#fff}
+  #orbit .legend button.on::before{content:"● ";color:var(--iris)}
+  #orbit .hint{position:absolute;right:20px;bottom:20px;font-size:12px;color:var(--ash);z-index:3}
+
+  /* ---------- 3 · agents install ---------- */
+  #agents{height:680px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:28px;padding:36px}
+  .term{position:relative;align-self:start;border-radius:14px;background:#0b0b10;outline:1px solid rgb(255 255 255/.1);box-shadow:0 30px 80px -30px rgb(128 82 255/.5);overflow:hidden}
+  .term .bar{display:flex;align-items:center;gap:6px;padding:10px 12px;background:#121218;border-bottom:1px solid rgb(255 255 255/.06)}
+  .term .bar i{width:10px;height:10px;border-radius:50%}
+  .term .bar b{margin-left:8px;font:500 12px var(--mono);color:var(--ash)}
+  .term pre{height:500px;overflow:hidden;padding:14px 16px;font:400 12.5px/1.65 var(--mono);color:#cfd3dc;white-space:pre-wrap}
+  .term .ps{color:var(--mint)} .term .ok{color:var(--saffron)} .term .cmd{color:#fff}
+  .term .caret{display:inline-block;width:7px;height:14px;background:var(--iris);vertical-align:-2px;animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .bins{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 22px;align-content:start}
+  .bin h4{font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--ash);margin-bottom:8px;transition:color .3s}
+  .bin.live h4{color:var(--saffron)}
+  .bin ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px;min-height:28px}
+  .bin .pill{font-size:12px;padding:5px 10px}
+  .flyer{position:absolute;z-index:20;pointer-events:none;transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .2s}
+  .agent{position:absolute;z-index:30;left:0;top:0;display:flex;align-items:flex-start;gap:1px;pointer-events:none;transition:transform .45s cubic-bezier(.3,.7,.2,1)}
+  .agent svg{width:16px;height:20px;fill:var(--cyan);stroke:#fff;stroke-width:1.2;filter:drop-shadow(0 2px 6px rgb(0 0 0/.6))}
+  .agent b{margin-top:15px;padding:1px 7px;border-radius:6px;font:600 10px/1.4 var(--font);background:var(--cyan);color:#001018}
+  .replay{position:absolute;right:20px;bottom:18px;z-index:40;background:none;border:1px solid rgb(255 255 255/.18);color:#fff;border-radius:9999px;padding:7px 14px;font:600 12px var(--font);letter-spacing:.04em;text-transform:uppercase;cursor:pointer}
+  .replay:hover{border-color:var(--iris)}
+
+  /* ---------- 4 · marquee rows ---------- */
+  #marquee{padding:36px 0 40px;display:flex;flex-direction:column;gap:14px}
+  .mrow{display:grid;grid-template-columns:170px minmax(0,1fr);align-items:center}
+  .mrow h4{padding-left:32px;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--saffron)}
+  .mtrack{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+  .mbelt{display:flex;gap:10px;width:max-content;animation:belt var(--dur,40s) linear infinite}
+  .mrow.rev .mbelt{animation-direction:reverse}
+  .mrow:hover .mbelt{animation-play-state:paused}
+  .mbelt .pill{transition:background .2s,border-color .2s,box-shadow .2s,transform .2s}
+  .mbelt .pill:hover{background:rgb(128 82 255/.25);border-color:rgb(128 82 255/.7);box-shadow:0 0 18px rgb(128 82 255/.5);transform:translateY(-2px)}
+  @keyframes belt{to{transform:translateX(-50%)}}
+  @media (max-width:900px){#story .sticky,#agents{grid-template-columns:1fr}#story canvas{position:absolute;inset:0;opacity:.45}.bins{grid-template-columns:1fr}.mrow{grid-template-columns:1fr;gap:8px}.mrow h4{padding-left:20px}}
+  footer{height:80px}
+</style>
+</head>
+<body>
+  <div class="intro">
+    <p class="label">Tech stack · design previews</p>
+    <h1>Pick how the <em>stack</em> shows up.</h1>
+    <p>All four use your confirmed list (51 tools, nothing added). Scroll inside preview 1, hover and click in preview 2, and press Replay in preview 3, and hover a row in preview 4.</p>
+  </div>
+
+  <div class="demo-tag"><b>01</b><span>Scroll story with particles</span><i>scroll inside the box</i></div>
+  <div class="frame"><div class="stage" id="story">
+    <div class="scroller"><div class="track"><div class="sticky">
+      <div class="copy">
+        <p class="label" id="s-label">Languages</p>
+        <h2 id="s-title">What I <em>write in.</em></h2>
+        <p class="count" id="s-count"></p>
+        <ul id="s-list"></ul>
+      </div>
+      <canvas id="s-canvas"></canvas>
+    </div></div></div>
+    <div class="rail" id="s-rail"></div>
+    <span class="hint">scroll ↓ · move the mouse over the shape</span>
+  </div></div>
+
+  <div class="demo-tag"><b>02</b><span>Orbit system</span><i>hover a tool · click a category</i></div>
+  <div class="frame"><div class="stage" id="orbit">
+    <div class="legend" id="o-legend"></div>
+    <div class="sky" id="o-sky">
+      <svg class="rings" id="o-rings"></svg>
+      <div class="core">LS</div>
+    </div>
+    <span class="hint">hover pauses a ring · click a category to zoom</span>
+  </div></div>
+
+  <div class="demo-tag"><b>03</b><span>AI agents install the stack</span><i>press Replay</i></div>
+  <div class="frame"><div class="stage" id="agents">
+    <div class="term" id="a-term">
+      <div class="bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><b>laxman@portfolio ~ stack</b></div>
+      <pre id="a-out"></pre>
+    </div>
+    <div class="bins" id="a-bins"></div>
+    <div class="agent" id="a-agent"><svg viewBox="0 0 16 20"><path d="M1 1 L1 16 L5 12 L8 19 L11 17.6 L8 11 L14 11 Z"/></svg><b>ai.builder</b></div>
+    <button class="replay" id="a-replay">Replay ↻</button>
+  </div></div>
+  <div class="demo-tag"><b>04</b><span>Infinite marquee rows</span><i>hover a row to pause it</i></div>
+  <div class="frame"><div class="stage" id="marquee"></div></div>
+  <footer></footer>
+
+<script>
+/* ===== the confirmed list (51 tools) — nothing added ===== */
+const STACK = [
+  { title: "Languages", head: "What I <em>write in.</em>", icon: "braces", items: [["JavaScript","#f7df1e"],["Java","#e76f00"],["Python","#3776ab"],["C","#a8b9cc"],["SQL (PostgreSQL, MySQL)","#4169e1"],["HTML5","#e34f26"],["CSS3","#1572b6"]] },
+  { title: "Frontend", head: "Interfaces that <em>move.</em>", icon: "browser", items: [["React 19","#61dafb"],["Next.js","#ffffff"],["Vite","#a259ff"],["Tailwind CSS","#38bdf8"],["shadcn/ui","#ffffff"],["Radix UI","#8b8b8b"],["Framer Motion","#e800ff"],["GSAP","#88ce02"],["Three.js / React Three Fiber","#ffffff"]] },
+  { title: "Backend & APIs", head: "Servers and <em>APIs.</em>", icon: "server", items: [["Node.js","#5fa04e"],["Express","#bdbdbd"],["Spring Boot","#6db33f"],["REST APIs","#ffb829"]] },
+  { title: "Databases", head: "Where data <em>lives.</em>", icon: "db", items: [["PostgreSQL","#4169e1"],["Supabase","#3ecf8e"],["MySQL","#00758f"],["Firebase","#ffca28"]] },
+  { title: "AI & agents", head: "AI that <em>acts.</em>", icon: "chip", items: [["Gemini API","#8e75ff"],["Groq","#f55036"],["Ollama","#ffffff"],["AI provider fallback","#8052ff"],["n8n agent pipelines","#ea4b71"],["Tavily search","#2fd3b0"],["Playwright scraping","#2ead33"],["LiveKit voice","#1fd5f9"],["Prompt engineering","#ffb829"],["Claude Code","#d97757"]] },
+  { title: "Testing", head: "Proof it <em>works.</em>", icon: "check", items: [["Vitest","#6e9f18"],["Playwright","#2ead33"],["Testing Library","#e33332"],["JUnit","#25a162"],["Mockito","#c5d9c8"],["Testcontainers","#17a6b2"]] },
+  { title: "Cloud & DevOps", head: "Shipped and <em>live.</em>", icon: "cloud", items: [["Vercel","#ffffff"],["Render","#8a05ff"],["Azure App Service","#0089d6"],["Git & GitHub","#f05032"]] },
+  { title: "Maps", head: "On the <em>map.</em>", icon: "pin", items: [["MapLibre","#396cb2"],["Mapbox","#4264fb"]] },
+  { title: "Tools", head: "Daily <em>tools.</em>", icon: "tools", items: [["VS Code","#007acc"],["Antigravity","#8052ff"],["Postman","#ff6c37"]] },
+  { title: "CS fundamentals", head: "The <em>foundations.</em>", icon: "graph", items: [["Data structures","#ffb829"],["DBMS","#2fd3b0"]] },
+];
+const pillHTML = ([n, c], k = 0, cls = "") => `<li class="pill ${cls}" style="--dot:${c};--k:${k}"><i></i>${n}</li>`;
+const PALETTE = ["#2fd3b0", "#4f7bff", "#8052ff", "#c44dff", "#f25cc7", "#ff7a5c", "#ffb829"];
+
+/* ================= 1 · SCROLL STORY ================= */
+(() => {
+  const scroller = document.querySelector("#story .scroller"), canvas = document.getElementById("s-canvas"), ctx = canvas.getContext("2d");
+  const rail = document.getElementById("s-rail");
+  rail.innerHTML = STACK.map(() => "<span></span>").join("");
+  const N = 1700;
+  // icon drawings → target points
+  const draw = {
+    braces: (c) => { c.font = "700 300px JetBrains Mono, monospace"; c.textAlign = "center"; c.textBaseline = "middle"; c.fillText("{ }", 200, 205); },
+    browser: (c) => { c.lineWidth = 22; c.strokeRect(40, 70, 320, 250); c.fillRect(40, 70, 320, 50); c.clearRect(70, 85, 20, 20); c.clearRect(105, 85, 20, 20); c.clearRect(140, 85, 20, 20); c.fillRect(80, 160, 140, 18); c.fillRect(80, 200, 220, 18); c.fillRect(80, 240, 180, 18); },
+    server: (c) => { for (let k = 0; k < 3; k++) { c.lineWidth = 20; c.strokeRect(60, 50 + k * 105, 280, 85); c.beginPath(); c.arc(300, 92 + k * 105, 12, 0, 7); c.fill(); c.fillRect(95, 84 + k * 105, 120, 16); } },
+    db: (c) => { c.lineWidth = 20; c.beginPath(); c.ellipse(200, 80, 130, 40, 0, 0, 7); c.stroke(); c.beginPath(); c.moveTo(70, 80); c.lineTo(70, 300); c.moveTo(330, 80); c.lineTo(330, 300); c.stroke(); for (const y of [160, 230, 300]) { c.beginPath(); c.ellipse(200, y, 130, 40, 0, 0, Math.PI); c.stroke(); } },
+    chip: (c) => { c.lineWidth = 20; c.strokeRect(100, 100, 200, 200); c.font = "700 90px Inter"; c.textAlign = "center"; c.textBaseline = "middle"; c.fillText("AI", 200, 205); for (let k = 0; k < 4; k++) { const p = 130 + k * 47; c.fillRect(p - 7, 40, 14, 60); c.fillRect(p - 7, 300, 14, 60); c.fillRect(40, p - 7, 60, 14); c.fillRect(300, p - 7, 60, 14); } },
+    check: (c) => { c.lineWidth = 22; c.beginPath(); c.arc(200, 200, 150, 0, 7); c.stroke(); c.lineWidth = 34; c.lineCap = "round"; c.beginPath(); c.moveTo(125, 205); c.lineTo(180, 260); c.lineTo(280, 145); c.stroke(); },
+    cloud: (c) => { c.beginPath(); c.arc(140, 220, 70, 0, 7); c.arc(210, 170, 95, 0, 7); c.arc(285, 220, 70, 0, 7); c.fill(); c.fillRect(140, 220, 145, 70); },
+    pin: (c) => { c.beginPath(); c.arc(200, 150, 110, Math.PI * 0.82, Math.PI * 2.18); c.lineTo(200, 360); c.closePath(); c.fill(); c.globalCompositeOperation = "destination-out"; c.beginPath(); c.arc(200, 150, 45, 0, 7); c.fill(); c.globalCompositeOperation = "source-over"; },
+    tools: (c) => { c.font = "700 220px JetBrains Mono, monospace"; c.textAlign = "center"; c.textBaseline = "middle"; c.fillText("</>", 200, 205); },
+    graph: (c) => { const P = [[200, 70], [100, 190], [300, 190], [60, 320], [160, 320], [260, 320], [340, 320]]; c.lineWidth = 14; c.beginPath(); for (const [a, b] of [[0, 1], [0, 2], [1, 3], [1, 4], [2, 5], [2, 6]]) { c.moveTo(...P[a]); c.lineTo(...P[b]); } c.stroke(); for (const [x, y] of P) { c.beginPath(); c.arc(x, y, 30, 0, 7); c.fill(); } },
+  };
+  const shapes = STACK.map((g) => {
+    const off = document.createElement("canvas"); off.width = off.height = 400;
+    const c = off.getContext("2d"); c.fillStyle = c.strokeStyle = "#fff"; draw[g.icon](c);
+    const d = c.getImageData(0, 0, 400, 400).data, pts = [];
+    for (let y = 0; y < 400; y += 3) for (let x = 0; x < 400; x += 3) if (d[(y * 400 + x) * 4 + 3] > 128) pts.push([(x - 200) / 200, (y - 200) / 200]);
+    return Array.from({ length: N }, () => pts[(Math.random() * pts.length) | 0] || [0, 0]);
+  });
+  const P = Array.from({ length: N }, (_, i) => ({ x: (Math.random() - .5) * 2, y: (Math.random() - .5) * 2, dx: 0, dy: 0, c: PALETTE[i % PALETTE.length], r: Math.random() * 6.28, s: 2.5 + Math.random() * 2.5 }));
+  let cur = -1, W = 0, H = 0, mouse = { x: -9, y: -9 };
+  const resize = () => { const r = canvas.getBoundingClientRect(), dpr = Math.min(devicePixelRatio, 2); W = r.width; H = r.height; canvas.width = W * dpr; canvas.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
+  new ResizeObserver(resize).observe(canvas); resize();
+  canvas.addEventListener("pointermove", (e) => { const r = canvas.getBoundingClientRect(); mouse = { x: e.clientX - r.left, y: e.clientY - r.top }; });
+  canvas.addEventListener("pointerleave", () => mouse = { x: -9999, y: -9999 });
+  const setStep = (k) => {
+    if (k === cur) return; cur = k; const g = STACK[k];
+    document.getElementById("s-label").textContent = g.title;
+    document.getElementById("s-title").innerHTML = g.head;
+    document.getElementById("s-count").textContent = `${String(k + 1).padStart(2, "0")} / ${STACK.length} · ${g.items.length} tools`;
+    document.getElementById("s-list").innerHTML = g.items.map((t, i) => pillHTML(t, i, "pop")).join("");
+    [...rail.children].forEach((s, i) => s.classList.toggle("on", i === k));
+  };
+  scroller.addEventListener("scroll", () => { const max = scroller.scrollHeight - scroller.clientHeight; setStep(Math.min(STACK.length - 1, Math.floor((scroller.scrollTop / max) * STACK.length))); });
+  setStep(0);
+  const tri = (x, y, s, r) => { ctx.save(); ctx.translate(x, y); ctx.rotate(r); ctx.beginPath(); ctx.moveTo(0, -s); ctx.lineTo(s * .87, s * .5); ctx.lineTo(-s * .87, s * .5); ctx.closePath(); ctx.stroke(); ctx.restore(); };
+  const tick = (t) => {
+    ctx.clearRect(0, 0, W, H);
+    const tgt = shapes[cur], scale = Math.min(W, H) * .36, cx = W * .5, cy = H * .5;
+    ctx.lineWidth = 1.1;
+    for (let i = 0; i < N; i++) {
+      const p = P[i], [tx, ty] = tgt[i];
+      p.x += (tx - p.x) * .07; p.y += (ty - p.y) * .07;
+      let sx = cx + p.x * scale, sy = cy + p.y * scale;
+      const ddx = sx - mouse.x, ddy = sy - mouse.y, d2 = ddx * ddx + ddy * ddy;
+      let px = 0, py = 0; if (d2 < 6400) { const d = Math.sqrt(d2) || 1, f = (1 - d / 80) * 34; px = ddx / d * f; py = ddy / d * f; }
+      p.dx += (px - p.dx) * .15; p.dy += (py - p.dy) * .15;
+      ctx.strokeStyle = p.c; ctx.globalAlpha = .85;
+      tri(sx + p.dx + Math.sin(t / 900 + i) * 1.2, sy + p.dy, p.s, p.r + t / 3000);
+    }
+    ctx.globalAlpha = 1; requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+})();
+
+/* ================= 2 · ORBIT ================= */
+(() => {
+  const stage = document.getElementById("orbit"), sky = document.getElementById("o-sky"), svg = document.getElementById("o-rings"), legend = document.getElementById("o-legend");
+  const rings = STACK.map((g, k) => ({ g, k, angle: Math.random() * 6.28, speed: (k % 2 ? -1 : 1) * (0.16 - k * 0.009), paused: false, pills: [] }));
+  legend.innerHTML = STACK.map((g, k) => `<button data-k="${k}">${g.title}</button>`).join("");
+  rings.forEach((r) => r.g.items.forEach((t, i) => {
+    const el = document.createElement("span"); el.className = "pill"; el.style.setProperty("--dot", t[1]); el.innerHTML = `<i></i>${t[0]}`;
+    el.addEventListener("pointerenter", () => { r.paused = true; el.classList.add("hot"); svg.children[r.k]?.classList.add("hot"); });
+    el.addEventListener("pointerleave", () => { r.paused = false; el.classList.remove("hot"); svg.children[r.k]?.classList.remove("hot"); });
+    sky.appendChild(el); r.pills.push({ el, off: (i / r.g.items.length) * Math.PI * 2 });
+  }));
+  let W = 0, H = 0, focus = -1;
+  const geom = (k) => { const rx = 120 + k * (Math.min(W, 1100) * 0.5 - 140) / (STACK.length - 1); return { rx, ry: rx * 0.36 }; };
+  const layout = () => { W = stage.clientWidth; H = stage.clientHeight; svg.setAttribute("viewBox", `0 0 ${W} ${H}`); svg.innerHTML = rings.map((r) => { const { rx, ry } = geom(r.k); return `<ellipse cx="${W / 2}" cy="${H / 2}" rx="${rx}" ry="${ry}"/>`; }).join(""); };
+  new ResizeObserver(layout).observe(stage); layout();
+  legend.addEventListener("click", (e) => {
+    const b = e.target.closest("button"); if (!b) return; const k = +b.dataset.k;
+    focus = focus === k ? -1 : k;
+    [...legend.children].forEach((x, i) => x.classList.toggle("on", i === focus));
+    rings.forEach((r) => r.pills.forEach((p) => p.el.classList.toggle("dim", focus >= 0 && r.k !== focus)));
+    [...svg.children].forEach((x, i) => x.classList.toggle("hot", i === focus));
+    const s = focus < 0 ? 1 : Math.min(2.2, (Math.min(W, 1100) * 0.45) / geom(focus).rx);
+    sky.style.transform = `scale(${s})`;
+  });
+  const tick = () => {
+    rings.forEach((r) => {
+      if (!r.paused) r.angle += r.speed * 0.016;
+      const { rx, ry } = geom(r.k);
+      r.pills.forEach((p) => {
+        const a = r.angle + p.off, x = W / 2 + Math.cos(a) * rx, y = H / 2 + Math.sin(a) * ry, depth = (Math.sin(a) + 1) / 2;
+        p.el.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%) scale(${0.78 + depth * 0.32})`;
+        p.el.style.zIndex = String(Math.round(depth * 100));
+        if (!p.el.classList.contains("dim")) p.el.style.opacity = String(0.45 + depth * 0.55);
+        else p.el.style.opacity = "";
+      });
+    });
+    requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+})();
+
+/* ================= 3 · AGENTS INSTALL ================= */
+(() => {
+  const stage = document.getElementById("agents"), out = document.getElementById("a-out"), bins = document.getElementById("a-bins"), agent = document.getElementById("a-agent"), term = document.getElementById("a-term");
+  let run = 0;
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  const rel = (el) => { const s = stage.getBoundingClientRect(), r = el.getBoundingClientRect(); return { x: r.left - s.left, y: r.top - s.top, w: r.width, h: r.height }; };
+  const slug = (t) => t.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  async function play() {
+    const id = ++run;
+    bins.innerHTML = STACK.map((g, k) => `<div class="bin" data-k="${k}"><h4>${g.title}</h4><ul></ul></div>`).join("");
+    out.innerHTML = '<span class="ps">~/stack $</span> <span class="caret"></span>';
+    stage.querySelectorAll(".flyer").forEach((f) => f.remove());
+    const t0 = rel(term); agent.style.transform = `translate(${t0.x + 40}px, ${t0.y + 60}px)`;
+    let log = "";
+    for (let k = 0; k < STACK.length; k++) {
+      if (id !== run) return;
+      const g = STACK[k], cmd = `add ${slug(g.title)} ${g.items.map((t) => slug(t[0])).join(" ")}`;
+      // the agent types the command
+      for (let c = 0; c <= cmd.length; c += 3) {
+        if (id !== run) return;
+        out.innerHTML = log + `<span class="ps">~/stack $</span> <span class="cmd">${cmd.slice(0, c)}</span><span class="caret"></span>`;
+        out.scrollTop = out.scrollHeight;
+        const caret = out.querySelector(".caret"), cr = rel(caret);
+        agent.style.transform = `translate(${cr.x + 6}px, ${cr.y + 8}px)`;
+        await sleep(14);
+      }
+      log += `<span class="ps">~/stack $</span> <span class="cmd">${cmd}</span>\n<span class="ok">✓ ${g.items.length} added to ${g.title}</span>\n`;
+      out.innerHTML = log + '<span class="ps">~/stack $</span> <span class="caret"></span>';
+      out.scrollTop = out.scrollHeight;
+      // each tool pops out of the terminal and flies into its group
+      const bin = bins.children[k], ul = bin.querySelector("ul"); bin.classList.add("live");
+      const from = rel(term);
+      for (let i = 0; i < g.items.length; i++) {
+        if (id !== run) return;
+        ul.insertAdjacentHTML("beforeend", pillHTML(g.items[i]).replace('class="pill ', 'style="visibility:hidden" class="pill '));
+        const target = ul.lastElementChild, to = rel(target);
+        const fly = document.createElement("span"); fly.className = "pill flyer"; fly.style.setProperty("--dot", g.items[i][1]);
+        fly.innerHTML = `<i></i>${g.items[i][0]}`; fly.style.fontSize = "12px"; fly.style.padding = "5px 10px";
+        fly.style.transform = `translate(${from.x + from.w - 120}px, ${from.y + from.h - 60}px) scale(.6)`; fly.style.opacity = "0";
+        stage.appendChild(fly);
+        requestAnimationFrame(() => { fly.style.opacity = "1"; fly.style.transform = `translate(${to.x}px, ${to.y}px) scale(1)`; });
+        setTimeout(() => { target.style.visibility = ""; fly.remove(); }, 720);
+        await sleep(70);
+      }
+      setTimeout(() => bin.classList.remove("live"), 900);
+      await sleep(240);
+    }
+    out.innerHTML = log + '<span class="ok">✓ stack ready · 51 tools</span>\n<span class="ps">~/stack $</span> <span class="caret"></span>';
+    agent.style.transform = `translate(${t0.x + t0.w + 60}px, ${t0.y - 30}px)`;
+  }
+  document.getElementById("a-replay").onclick = play;
+  // start when it first scrolls into view
+  new IntersectionObserver((e, io) => { if (e[0].isIntersecting) { io.disconnect(); play(); } }, { threshold: .35 }).observe(stage);
+})();
+/* ================= 4 · MARQUEE ROWS ================= */
+(() => {
+  const host = document.getElementById("marquee");
+  host.innerHTML = STACK.map((g, k) => {
+    // repeat short lists so every belt is wider than the screen, then double it for a seamless loop
+    let items = g.items; while (items.length < 10) items = items.concat(g.items);
+    const half = items.map((t) => pillHTML(t)).join("");
+    return `<div class="mrow ${k % 2 ? "rev" : ""}"><h4>${g.title}</h4><div class="mtrack"><ul class="mbelt" style="--dur:${34 + (k % 3) * 8}s">${half}${half}</ul></div></div>`;
+  }).join("");
+})();
+</script>
+</body>
+</html>
