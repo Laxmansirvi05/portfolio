@@ -1,10 +1,14 @@
 # Laxman Sirvi — Portfolio
 
-> AI & Full-Stack Developer | Building voice-first AI products
+> AI & Full-Stack Developer | I build AI that ships
+
+**Live: [laxmansirvi.me](https://laxmansirvi.me)**
+
+The site is a Next.js 16 app in [`web/`](web/) (React 19, Tailwind v4, three.js). The static HTML site at the repository root is the previous version.
 
 ## 👋 About Me
 
-**Laxman Sirvi** — a second-year dual-degree student at **IIT Madras** and **Geethanjali College of Engineering & Technology**, passionate about Artificial Intelligence, Data Science, and software development.
+**Laxman Sirvi** — a second-year B.Tech (CSE, AI & ML) student at **Geethanjali College of Engineering & Technology** with a Foundation in Programming & Data Science from **IIT Madras**, passionate about Artificial Intelligence, Data Science, and software development.
 
 I don't stop at demos — I ship production AI: an agentic job-search engine, a real-time voice interviewer, and a full-stack career platform, built end-to-end and deployed for real users.
 
@@ -12,8 +16,8 @@ I don't stop at demos — I ship production AI: an agentic job-search engine, a 
 
 | Institution | Degree | CGPA |
 |---|---|---|
-| **IIT Madras** | B.Sc — Data Science | 7.17 / 10 |
-| **Geethanjali College of Engineering & Technology** | B.Tech — CSE (AI & ML) | 9.275 / 10 |
+| **IIT Madras** | Foundation in Programming & Data Science (completed) | 7.13 / 10 |
+| **Geethanjali College of Engineering & Technology** | B.Tech — CSE (AI & ML) | 9.25 / 10 |
 | **Gatik Junior College** | Intermediate — MPC | 96.5% |
 | **St. Anthony's Grammar High School** | Secondary School | 9.3 / 10 |
 
@@ -36,7 +40,7 @@ I don't stop at demos — I ship production AI: an agentic job-search engine, a 
 | Project | Description |
 |---|---|
 | **Opportunity Radar** | Full-stack AI career platform — agentic job-search engine |
-| **AI Voice Mock Interviewer** | Real-time voice-based mock interview system |
+| **DeepInterview** | Open-source voice mock interviewer (contribution) |
 | **AI Resume Generator** | AI-powered resume builder |
 | **AI Chatbox** | AI-powered chatbot |
 | **Weather App** | Weather dashboard |
@@ -57,6 +61,9 @@ I don't stop at demos — I ship production AI: an agentic job-search engine, a 
 - Introduction to Generative AI — Google Cloud
 - AI Tools & ChatGPT Workshop — be10x
 - Introduction to Generative AI — IBM SkillsBuild
+- SQL (Basic) — HackerRank
+- SQL and Relational Databases 101 — IBM Skills Network
+- Java Foundations — Oracle
 
 ---
 
