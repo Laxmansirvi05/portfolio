@@ -80,18 +80,16 @@ I don't stop at demos — I ship production AI: an agentic job-search engine, a 
 
 ```
 portfolio/
-├── index.html                          # Main portfolio page
-├── style.css                           # Styles
-├── script.js                            # JavaScript logic
-├── profile.jpg                          # Profile photo
-├── SETUP.md                             # Setup reference
-├── canvas.json                          # Canvas configuration
-├── images/
-│   ├── certificates/                   # Certificate images
-│   └── projects/                       # Project screenshots
-├── assets/
-│   └── Laxman_Sirvi_Resume.pdf         # Resume
-└── README.md                            # This file
+├── web/                                # Current site (Next.js 16, React 19, Tailwind v4, three.js)
+│   ├── src/app/                        # Pages: home, /projects, /certificates
+│   ├── src/components/                 # Sections and UI components
+│   ├── src/lib/                        # Project, certificate and particle data
+│   └── public/                         # Photos, project and certificate images, résumé
+├── prototypes/                         # Design prototypes (loader, hero objects, tech stack)
+├── index.html, style.css, script.js    # Previous static version of the site
+├── images/, assets/                    # Assets for the previous version
+├── SETUP.md                            # Setup reference for the previous version
+└── README.md                           # This file
 ```
 
 ---
